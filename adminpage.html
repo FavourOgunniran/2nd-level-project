@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBanq.com</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/js/bootstrap.js">
+</head>
+<body id="bodybank">
+      <!-- <p class="h1 display-5">BANKING OPTIONS</p> -->
+      <div class="navbar bg-dark">
+          <ul class="nav">
+              <li class="nav-link">
+                <button class="btn btn-dark" onclick="send()">Transfer</button>
+              </li>
+              <li class="nav-link">
+                <button class="btn btn-dark" onclick="showBalance()">check balance</button>
+              </li>
+              <li  class="text-light mx-3 nav-link " style="margin-left: 500px !important; font-size: 20px;" >  My Banq.com</li>
+              <!-- <li  class="text-light mx-3 nav-link mt-2"> <a href="">ADMIN</a></li> -->
+          </ul>
+      </div>
+     <!-- <p class="mt-5"><button onclick="fun()" class="btn btn-dark">show all students</button>  </p></center> -->
+     <div action="loginp2.html" id="transbox" method="post">
+        <h3>TRANSFER</h3>
+        <input type="text" name="" id="un" class="thein" placeholder="recepient's account" >
+        <input type="text" name="" id="amnt" class="thein" placeholder="amount">
+        <input type="password" name="" id="ps" class="thein" placeholder="pin">
+        <input type="submit" name="" id="log" value="complete Transfer" onclick="verify()"  >
+        <!-- <p>   <span class="text-light"> you don't have an account? </span> <a href="signuptoportal.html">complete</a></p> -->
+    </div>
+    <div id="greet">
+       <center>  <p  class="display-3 text-light" style="font-size: 100px;"> WELCOME</p></center>
+    </div>
+
+     <p> <div id="balboard"> <span class="display-4 text-light "  >YOUR BALANCE IS:</span><span id="showb" class="display-3 " ></span> </div></p>
+
+
+    <script>
+      var Balance = 10000;
+      var amount;
+
+      var pincode;
+      var bill= JSON.parse(localStorage.userIndex)
+      var loginDetails1=JSON.parse(localStorage.obj)
+        var ar2=[]
+    //   Balance=Balance -amount
+      function fun(){
+       
+          display.innerHTML=localStorage.getItem('dave')
+        
+      }
+      function showBalance(){
+          var newb= loginDetails1[bill].bal
+        //   var newbb = eval(newb - amount)
+        showb.innerHTML =  "₦"+ newb;
+
+        balboard.style="display:block"
+        transbox.style="display:none"
+        greet.style=" display:none"
+
+        }
+        function verify(){
+            var newb= loginDetails1[bill].bal
+           exist={}
+           exist2={}
+
+            // amount = amnt.value
+            
+            for(i=0; i< loginDetails1.length; i++){
+           
+           if( un.value == loginDetails1[i].acc  && ps.value == loginDetails1[bill].pin && newb > amnt.value && un.value != loginDetails1[bill].acc){
+               
+            //   exist.accountnum = 
+                 
+            
+             var newbb = eval(newb - amnt.value)
+            //  var newbbb = eval(parseInt(newb)+ parseInt(amnt.value))
+             
+            //    showb.innerHTML =  "₦"+newb
+               alert("TRANSFER SUCCESSFUL") 
+               alert("your current balance is now " + "₦"+newbb ) 
+
+
+            //  exist.firstname = information[i].firstname; 
+            // amnt.value=""
+            exist.firstname = loginDetails1[bill].firstname
+            exist.lastname = loginDetails1[bill].lastname
+            exist.acc = loginDetails1[bill].acc
+            exist.email = loginDetails1[bill].email
+            exist.number = loginDetails1[bill].number
+            exist.password = loginDetails1[bill].password
+            exist.user = loginDetails1[bill].user
+            exist.dob = loginDetails1[bill].dateofbirth
+            exist.pin = loginDetails1[bill].pin
+            exist.bal = eval(newb - amnt.value)
+       
+            loginDetails1.splice(bill , 1, exist);
+            localStorage.obj = JSON.stringify(loginDetails1);
+
+
+
+
+
+            exist2.firstname = loginDetails1[i].firstname
+            exist2.lastname = loginDetails1[i].lastname
+            exist2.acc = loginDetails1[i].acc
+            exist2.email = loginDetails1[i].email
+            exist2.number = loginDetails1[i].number
+            exist2.password = loginDetails1[i].password
+            exist2.user = loginDetails1[i].user
+            exist2.pin = loginDetails1[i].pin
+            exist2.bal = eval(parseInt(newb)+ parseInt(amnt.value))   
+
+       
+            loginDetails1.splice(i , 1, exist2);
+            localStorage.obj = JSON.stringify(loginDetails1);
+
+               
+              
+            //    if ( eval(Balance-amount)==0) {
+            //     //  showb.innerHTML.style="color:red;"
+            //     Balance.style="color:red;"
+            //  }
+            }
+            // else  {
+            //     // alert("enter info correctly") 
+            //     // return
+                                                
+            // }      
+             }
+            //  if ( eval(Balance-amount)==0) {
+            //     //  showb.innerHTML.style="color:red;"
+            //     Balance.style="color:red;"
+            //  }
+           //    else{
+           //    alert("invalid login details")
+           //    return
+           // }
+          
+       //   
+            // if (Balance >= amount)
+            // {
+            //    Balance = Balance - amount
+             
+            //    showb.value =  "₦"+Balance 
+            //    alert("TRANSFER SUCCESSFUL") 
+            //    alert("your current balance is now " + "₦"+Balance ) 
+              
+            // }
+            // else {
+            //     alert("Insufficent funds") 
+              
+                                                
+            // }  
+        }
+        function send(){
+            greet.style=" display:none"
+            balboard.style="display:none"
+            transbox.style="display:block"
+        }
+    </script>
+</body>
+</html>

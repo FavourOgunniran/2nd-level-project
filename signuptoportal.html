@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBanq.com</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/js/bootstrap.js">
+</head>
+<body id="bodysignup">
+    <div class="navbar bg-dark">
+        <ul class="nav bg-dark" >
+
+         
+            <li  class="text-light mx-3 nav-link " style="margin-left: 582px !important; font-size: 20px;" >  My Banq.com</li>
+         
+        </ul> 
+        
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+    <div  id="theboxx" method="post" style="margin-top: 60px;" >
+        <h3>SIGN UP</h3>
+        <input type="text" name="" id="fn" class="thein" placeholder="FIRSTNAME" >
+        <input type="text" name="" id="ln"   class="thein"  placeholder="LASTNAME">
+        <input type="text" name="" id="ema" class="thein" placeholder="EMAIL" >
+        <input type="date" name="" id="dob" class="thein" placeholder="Date of birth" >
+        <input type="text" name="" id="num" class="thein" placeholder="phone number" >
+        <!-- <input type="text" name="" id="ema" class="thein" placeholder="EMAIL" > -->
+        <input type="text" name="" id="passw"   class="thein"  placeholder="password">
+        <input type="text" name="" id="pincode"   class="thein"  placeholder="account pin">
+        <input type="text" name="" id="uname"   class="thein"  placeholder="username">
+        <input type="button" name="" id="log" value="Sign up"  onclick="sup()">
+    </div>
+
+
+
+ <script>
+
+var store=[]
+
+
+ var ud;
+        function sup(){
+            var signup = {}
+            signup.firstname = fn.value;
+            signup.lastname = ln.value;
+            signup.email = ema.value;
+            signup.password = passw.value;
+            signup.dateofbirth=dob.value
+            signup.number=num.value
+             signup.pin=pincode.value
+            signup.user = uname.value;
+            signup.bal=50000
+            signup.acc= Math.floor(Math.random() * 1000000000)
+          
+               
+            
+            if (localStorage.obj) {
+                ud = JSON.parse(localStorage.obj)
+                store=ud
+                for(i=0; i<store.length; i++){
+                    if (uname.value == store[i].user && passw.value== store[i].password  && ema.value==store[i].email){
+                   alert("user already exists")
+                  
+                   return
+                 }    
+                }
+              
+
+                if (fn.value!="" && ln.value!="" && ema.value!="" && passw.value!="" && dob.value!=""&& num.value!="" && uname.value!="") {
+                   
+                        alert("sign up successful")
+                    alert("your account number is" + signup.acc)
+                store.push(signup)
+            localStorage.obj=JSON.stringify(store)
+            window.location="login.html"  
+                
+                  
+            // localStorage.userIndex2=i;
+           
+                } else{
+                    alert("please fill in all the input spaces")
+                }
+               
+
+            }else if (fn.value!="" && ln.value!="" && ema.value!="" && passw.value!="" && dob.value!=""&& num.value!="" && uname.value!="") {
+                alert("sign up successful")
+                    alert("your account number is " + signup.acc)
+                store.push(signup)
+            localStorage.obj=JSON.stringify(store)
+            window.location="login.html"   
+            } else{
+                alert("please fill in all the input spaces")
+           
+            }
+          
+          
+           
+        
+           
+                
+        }
+    
+
+ </script>
+</body>
+</html>

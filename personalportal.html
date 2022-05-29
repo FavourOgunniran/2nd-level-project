@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/js/bootstrap.js">
+
+    <title>Document</title>
+</head>
+<body  style="background: linear-gradient(to right,#6c6c6d, #888888);">
+
+    <div class="navbar bg-dark">
+        <ul class="nav bg-dark" >
+            <li class="nav-link">
+                <!-- <a href="">  View your personal details</a>   -->
+              </li>
+            <!-- <li class="text-light mx-3 bg-outline-light nav-link"> <a href="signuptoportal.html" id="sig"> SIGN UP</a></li> -->
+            <!-- <li  class="text-light mx-3  nav-link"> <a href="" > LOGIN </a></li> -->
+            <!-- <li  class="text-light mx-3 nav-link ">  <a href=""> PERSONAL PORTAL </a></li> -->
+            <!-- View your personal details -->
+            <!-- <li  class="text-light mx-3 nav-link">  <a href=""> LOG OUT</a></li> -->
+        </ul>
+    </div>
+     <div  id="theboxx3" method="post" style="margin-top: 60px;" >
+        <h5>YOUR INFO</h5>
+        <p class="mt-5 text-light">FIRSTNAME :</p>
+        <input type="text" name="" id="pfn" class="thein" placeholder=""  disabled>
+        <p class=" text-light">LASTNAME :</p>
+        <input type="text" name="" id="pln"   class="thein"  placeholder="" disabled id="d">
+        <p class=" text-light">EMAIL :</p>
+        <input type="email" name="" id="pema" class="thein" placeholder=""  disabled>
+        <p class=" text-light">PASSWORD :</p>
+        <input type="password" name="" id="ppass"   class="thein"  placeholder="" disabled>
+        <p class="text-light">USERNAME :</p>
+        <input type="text" name="" id="puname"   class="thein"  placeholder="" disabled>
+        <p class="text-light">DATE OF BIRTH :</p>
+        <input type="text" name="" id="dob"   class="thein"  placeholder="" disabled>
+        <p class="text-light"> ACCOUNT NUMBER:</p>
+        <input type="text" name="" id="account"   class="thein"  placeholder="" disabled>
+        <p class="text-light">BANK PIN:</p>
+        <input type="text" name="" id="pins"   class="thein"  placeholder="" disabled>
+        <input type="button" name="" id="log2" value="EDIT"  onclick="edit()"> 
+        <input type="button" name="" id="log3" value="save"  onclick="safe()"> 
+
+    </div>
+
+
+    <script>
+        var userInfo=JSON.parse(localStorage.obj)
+         var index = JSON.parse(localStorage.userIndex) 
+       
+         var editing={}
+         
+        function edt(){
+            
+            pfn.value = userInfo[index].firstname
+            // edit.firstname=pln.value
+            pln.value = userInfo[index].lastname
+            pema.value = userInfo[index].email
+            ppass.value = userInfo[index].password
+            puname.value = userInfo[index].user
+            dob.value = userInfo[index].dateofbirth
+            pins.value = userInfo[index].pin
+            account.value = userInfo[index].acc
+            
+            // userInfo.splice(index, 1, editing);
+            // localStorage.obj = JSON.stringify(userInfo);
+
+            // for sign up
+            // pfn.value = userInfo[index2].firstname
+            // 
+            // pema.value = userInfo[index2].email
+            // ppass.value = userInfo[index2].password
+            // puname.value = userInfo[index2].user
+            // dob.value = userInfo[index2].dateofbirth
+            // pins.value = userInfo[index2].pin
+            // account.value = userInfo[index2].acc
+//             for( var i=0; i<infos.length; i++){
+//                 if ( i == infos.length-1) {
+//                     for( var k=0; k<userInfo.length; k++){
+//                         if (infos[i].username== userInfo[k].user) {
+
+//         pfn.value= userInfo[k].firstname
+//         pln.value= userInfo[k].lastname
+//  pema.value=userInfo[k].email 
+//  ppass.value=userInfo[k].password
+//  puname.value=userInfo[k].user
+//  dob.value=userInfo[k].dateofbirth
+//  pins.value=userInfo[k].pin
+//  account.value=userInfo[k].acc
+//                         }
+//                     }
+//                 }
+//             }
+          
+             
+           
+            }
+          
+   
+        edt() 
+        function edit(){
+            
+           editing.firstname = userInfo[index].firstname
+           editing.lastname = userInfo[index].lastname
+           editing.email = userInfo[index].email
+           editing.password= userInfo[index].password
+           editing.user = userInfo[index].user
+           editing.number= userInfo[index].number
+           editing.dateofbirth= userInfo[index].dateofbirth
+           editing.pin= userInfo[index].pin
+           editing.acc = userInfo[index].acc
+           editing.bal=userInfo[index].bal  
+        userInfo.splice(index, 1, editing);
+            localStorage.obj = JSON.stringify(userInfo);
+
+             
+            pfn.disabled=false
+            pln.disabled=false
+            pema.disabled=false
+            ppass.disabled=false
+            puname.disabled=false
+            dob.disabled=false
+            pins.disabled=false
+            account.disabled=false
+            pfn.focus() 
+            log2.style="display:none;"
+            log3.style="display:block;"
+        }         
+        function safe(){
+            log2.style="display:block;"
+            log3.style="display:none;"
+            alert("edit successful")
+        
+            editing.firstname = pfn.value
+           editing.lastname = pln.value
+           editing.email = pema.value
+           editing.password= ppass.value
+           editing.user = puname.value
+           editing.dateofbirth= dob.value
+           editing.pin= pins.value
+           editing.acc = account.value
+           userInfo.splice(index, 1, editing);
+            localStorage.obj = JSON.stringify(userInfo);
+            
+            pfn.disabled=true
+            pln.disabled=true
+            pema.disabled=true
+            ppass.disabled=true
+            puname.disabled=true
+            dob.disabled=true
+            pins.disabled=true
+            account.disabled=true
+        }                
+    
+        
+    </script>
+</body>
+</html>

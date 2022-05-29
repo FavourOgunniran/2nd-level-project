@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBanq.com</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/js/bootstrap.js">
+</head>
+<body id="bodyport">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Mybanq.com</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item mx-5">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" style="margin-left: 500px;">
+              <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="navbar bg-dark" >
+        <ul class="nav " >
+
+            
+    
+            <li  class="text-light mx-3 nav-link ">  <button class="btn btn-dark " > all userInfo</button></li>
+          
+        </ul>
+    </div>
+
+
+ 
+
+    <p>
+        <table id="formdiv" border="3"  style="font-size: 20px; width: 100%; height: 100px; " id="infs" class="  text-dark bg-light" ></table>
+    </p>
+   
+
+    <div>
+        <div  id="theboxx7" method="post" style="margin-top: 60px;" >
+            <h5>YOUR INFO</h5>
+            <p class="mt-5 text-light">FIRSTNAME :</p>
+            <input type="text" name="" id="pfn" class="thein" placeholder=""  disabled>
+            <p class=" text-light">LASTNAME :</p>
+            <input type="text" name="" id="pln"   class="thein"  placeholder="" disabled id="d">
+            <p class=" text-light">EMAIL :</p>
+            <input type="email" name="" id="pema" class="thein" placeholder=""  disabled>
+            <p class=" text-light">PASSWORD :</p>
+            <input type="password" name="" id="ppass"   class="thein"  placeholder="" disabled>
+            <p class="text-light">USERNAME :</p>
+            <input type="text" name="" id="puname"   class="thein"  placeholder="" disabled>
+            <p class="text-light">DATE OF BIRTH :</p>
+            <input type="text" name="" id="dob"   class="thein"  placeholder="" disabled>
+            <p class="text-light"> ACCOUNT NUMBER:</p>
+            <input type="text" name="" id="account"   class="thein"  placeholder="" disabled>
+            <p class="text-light"> phone NUMBER:</p>
+            <input type="text" name="" id="nums"   class="thein"  placeholder="" disabled>
+            <p class="text-light">BANK PIN:</p>
+            <input type="text" name="" id="pins"   class="thein"  placeholder="" disabled>
+            
+            <input type="button" name="" id="log4" value="save"  onclick="safe()"> 
+    
+        </div>
+    </div>
+
+
+
+
+ <script>
+  
+var loginDetails=JSON.parse(localStorage.obj)
+var submittedInfo=[]
+var delt=[]
+var editing={}
+var index = JSON.parse(localStorage.userIndex) 
+
+      function fun(){
+   submittedInfo=loginDetails
+formdiv.innerHTML="<tr> <td class='text-center'><h3>customer number</h3> <td> FIRSTNAME <td class='text-center'> LASTNAME <td class='text-center'> E-MAIL <td class='text-center'> DATE OF BIRTH <td class='text-center'> PHONE NUMBER <td class='text-center'> BANK PIN <td  class='text-center'> ACCOUNT NUMBER <td colspan='2' class='text-center'>modify"
+for ( var i=0; i <  submittedInfo.length; i++){
+
+    
+ formdiv.innerHTML+=    "  <tr> <td><h3>"+  +eval(i+1) +" <td class='text-center'>"+ submittedInfo[i].firstname + "<td class='text-center'>  "+ submittedInfo[i].lastname +  " <td class='text-center'>  "+submittedInfo[i].email  +  " <td class='text-center'>  "+submittedInfo[i].dateofbirth + " <td class='text-center'> Phone number: "+submittedInfo[i].number +  " <td class='text-center'> bank pin: "+submittedInfo[i].pin +  " <td class='text-center'> accont number: "+submittedInfo[i].acc + " <td class='text-center'><button onclick='dell("+i+")' class='btn btn-primary'>Delete</button>  <td><button onclick='edit("+i+")' id='save' class='btn btn-primary'>edit</button> " 
+
+
+ 
+}
+ 
+}
+
+function dell(index){
+
+   if ()
+        submittedInfo.splice(index,1); 
+       
+        localStorage.obj = JSON.stringify(submittedInfo)
+   
+fun();
+
+ 
+}
+
+function ed(ind){
+    
+fn.value= submittedInfo[ind].firstname
+ln.value= submittedInfo[ind].lastname
+ema.value= submittedInfo[ind].email
+dob.value= submittedInfo[ind].dateofbirth
+in3.value= submittedInfo[ind].department
+in2.value= submittedInfo[ind].number
+in3.value= submittedInfo[ind].password
+in2.value= submittedInfo[ind].user
+submittedInfo.splice(ind,1);  
+
+
+}
+function edit(i){
+             formdiv.style="display:none"
+             theboxx7.style="display:block"
+            editing.firstname = submittedInfo[i].firstname
+            editing.lastname = submittedInfo[i].lastname
+            editing.email = submittedInfo[i].email
+            editing.password= submittedInfo[i].password
+            editing.user = submittedInfo[i].user
+            editing.dateofbirth= submittedInfo[i].dateofbirth
+            editing.number=submittedInfo[i].number
+            editing.pin= submittedInfo[i].pin
+            editing.acc = submittedInfo[i].acc
+            editing.bal= submittedInfo[i].bal
+         submittedInfo.splice(i, 1, editing);
+             localStorage.obj = JSON.stringify(submittedInfo);
+        
+              
+             pfn.value=submittedInfo[i].firstname
+             pln.value=submittedInfo[i].lastname
+             pema.value=submittedInfo[i].email
+             ppass.value=submittedInfo[i].password
+             puname.value=submittedInfo[i].user
+             dob.value=submittedInfo[i].dateofbirth
+             pins.value=submittedInfo[i].pin
+             account.value=submittedInfo[i].acc
+             nums.value= submittedInfo[i].number
+
+             pfn.disabled=false
+             pln.disabled=false
+             pema.disabled=false
+             ppass.disabled=false
+             puname.disabled=false
+             dob.disabled=false
+             pins.disabled=false
+             account.disabled=false
+             nums.disabled=false
+             pfn.focus() 
+           
+         }      
+         
+         function safe(){
+            theboxx7.style="display:none"
+            window.location="portal.html"
+            alert("edit successful")
+        
+            editing.firstname = pfn.value
+           editing.lastname = pln.value
+           editing.email = pema.value
+           editing.password= ppass.value
+           editing.user = puname.value
+           editing.dateofbirth= dob.value
+           editing.pin= pins.value
+           editing.acc = account.value
+           editing.number=nums.value
+        //    editing.bal= submittedInfo[i].bal
+           submittedInfo.splice( 1, editing);
+            localStorage.obj = JSON.stringify(submittedInfo);
+            
+           
+        }                
+        
+fun()
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+</body>
+</html>

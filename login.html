@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBanq.com</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/js/bootstrap.js">
+
+</head>
+
+
+<body id="bodylogin">
+    <div class="navbar bg-dark" class="bg">
+        <ul class="nav bg-dark"  class="bg">
+
+            <!-- <li class="text-light mx-3 bg-outline-light nav-link"> <a href="signuptoportal.html" id="sig"> SIGN UP</a></li> -->
+            <li  class="text-light mx-3  nav-link"> <a href="" class="text-light" > LOGIN </a></li>
+            <li  class="text-light mx-3 nav-link " style="margin-left: 800px !important; font-size: 20px;" >  My Banq.com</li>
+            <!-- <li  class="text-light mx-3 nav-link ">  <a href=""> PERSONAL PORTAL </a></li> -->
+            <!-- <li  class="text-light mx-3 nav-link"> <a href="">ADMIN</a></li> -->
+            <!-- <li  class="text-light mx-3 nav-link">  <a href=""> LOG OUT</a></li> -->
+        </ul>
+    </div>
+
+
+
+    <div class="mt-5">
+      <center>  <p class="h1 display-5"  style="font-size: 53px;"> <span class="text-light"> welcome</span></p></center>
+    </div>
+    <div action="loginp2.html" id="theboxx2" method="post">
+        <h3>Login</h3>
+        <input type="text" name="" id="un" class="thein" placeholder="username" >
+        <input type="password" name="" id="psp" class="thein" placeholder="password">
+        <input type="button" name="" id="log" value="Login" onclick="clogin()"  >
+        <!-- <button id="log"  onclick="clogin()">login</button> -->
+        <p>   <span class="text-light"> you don't have an account? </span> <a href="signuptoportal.html">signup</a></p>
+    </div>
+
+
+    <script>
+
+        var loginDetails = JSON.parse(localStorage.getItem('obj'))
+         var very;
+        // console.log(loginDetails); 
+    
+        function clogin(){            
+       for(i = 0; i < loginDetails.length; i++){
+        if( psp.value ==  loginDetails[i].password && un.value== loginDetails[i].user ){
+                alert("welcome " +loginDetails[i].user)
+                localStorage.userIndex=i;
+              window.location = "adm.html"  
+          }
+
+              // else {
+              
+              //       alert('Invalid'); 
+              //   return                    
+              // }
+            //   if( psp.value !== loginDetails[i].password && un.value!==loginDetails[i].user){
+            // alert("incorrect username or password") 
+          
+             
+          // } 
+        
+
+         
+     
+     
+
+           
+           
+
+        }
+         
+       
+        
+        }
+        
+     
+       
+    </script>
+</body>
+</html>
